@@ -1,0 +1,90 @@
+:root {
+  /* Color Palette */
+  --primary-100: #5570F1;
+  --primary-90: #6078EC;
+  --primary-80: #6D83EC;
+  --primary-70: #7C8FEC;
+  --primary-60: #8899E9;
+  --primary-50: #97A5EB;
+  --primary-40: #ABB5E9;
+  --primary-30: #B6BFE8;
+  --primary-20: #C4CAE8;
+  --primary-10: #DBDEEE;
+
+  --secondary-100: #FFCC91;
+  --secondary-90: #FFD29E;
+  --secondary-80: #FFDAAE;
+  --secondary-70: #FFDFBA;
+  --secondary-60: #FFE5C8;
+  --secondary-50: #FFEAD1;
+  --secondary-40: #FFF0DE;
+  --secondary-30: #FFF2E2;
+  --secondary-20: #FEF5EA;
+  --secondary-10: #FEF9F2;
+
+  --black-100: #1C1D22;
+  --black-90: #2C2D33;
+  --black-80: #33343A;
+  --black-70: #37393F;
+  --black-60: #45464E;
+  --black-50: #53545C;
+  --black-40: #6E7079;
+  --black-30: #8B8D97;
+  --black-20: #A6A8B1;
+  --black-10: #BEC0CA;
+
+  --action: #519C66;
+
+  --error: #CC5F5F;
+
+  --border: var(--black-30);
+  --text-h: var(--black-60);
+  --text-p: var(--black-30);
+  --bg: white;
+
+  --text-h: #08060d;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: var(--secondary-400);
+    --text-h: var(--neutral-50);
+    --bg: var(--neutral-900);
+    --border: var(--neutral-800);
+    --code-bg: var(--neutral-800);
+    --accent: var(--primary-400);
+    --accent-bg: rgba(129, 140, 248, 0.15);
+    --accent-border: rgba(129, 140, 248, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+
+  }
+}
