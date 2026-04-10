@@ -1,0 +1,36 @@
+.navItem {
+  margin: 5px 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: var(--black-50);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+}
+
+.navLink:hover {
+  background: var(--primary-20);
+}
+
+.navLink.active {
+  background: var(--primary-100);
+  color: white;
+  font-weight: 500;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 15px;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 14px;
+}

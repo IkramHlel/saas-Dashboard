@@ -1,0 +1,45 @@
+.sidebar {
+  width: 180px;
+  background: var(--bg);
+  transition: width 0.3s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sidebar.collapsed {
+  width: 110px;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 10px;
+  overflow: hidden;
+  margin-bottom: 32px; 
+}
+
+.appTitle {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--black-60);
+  margin: 0;
+  word-break: break-word;
+  text-decoration: none;
+}
+
+.sidebarNav {
+  flex: 1;
+  padding: 10px 0;
+}
+
+.sidebarFooter {
+  padding: 20px 0;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
