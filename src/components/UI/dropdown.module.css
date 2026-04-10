@@ -1,0 +1,54 @@
+/* Dropdown.module.css */
+
+.dropdown {
+  position: relative;
+  width: 90px;
+}
+
+.trigger {
+  width: 100%;
+  color: var(--black-10);
+  background: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  
+}
+
+.icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+/* rotation quand ouvert */
+.rotate {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--text-h)
+}
+
+.item:hover {
+  background: #f3f4f6;
+}
