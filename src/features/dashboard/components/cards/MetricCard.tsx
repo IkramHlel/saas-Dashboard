@@ -1,17 +1,9 @@
-import type { ReactNode } from 'react';
-import { Dropdown } from '../../../shared/components/UI/dropdown';
+import { Dropdown } from '../../../../shared/components/UI/dropdown';
 import styles from './MetricCard.module.css';
+import {type DashboardCardConfig } from '../../types/dashboard.types';
 
-interface MetricItem {
-  label: string;
-  value: string | number;
-}
 
-interface MetricCardProps {
-  items: MetricItem[];
-  icon: ReactNode;
-}
-const MetricCard = ({ items, icon }: MetricCardProps) => {
+const MetricCard = ({ items, icon: Icon, iconProps }: DashboardCardConfig) => {
   const options = [
     { label: "This week", value: "week" },
     { label: "This month", value: "month" },
@@ -20,8 +12,10 @@ const MetricCard = ({ items, icon }: MetricCardProps) => {
 
   return (
     <div className={styles.card}>
-      <div className={styles.cardHeader}>
-        <div className={styles.cardIcon}>{icon}</div>
+      <div className={styles.header}>
+        <div className={styles.icon}>
+          <Icon {...iconProps} />
+        </div>
 
         <Dropdown
           options={options}
@@ -30,7 +24,7 @@ const MetricCard = ({ items, icon }: MetricCardProps) => {
         />
       </div>
 
-      <div className={styles.cardContent}>
+      <div className={styles.content}>
         {items.map((item) => (
           <div key={item.label}>
             <p className={styles.title}>{item.label}</p>

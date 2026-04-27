@@ -1,0 +1,45 @@
+.markettingGrid {
+  display: grid;
+  gap: 24px;
+}
+
+.markettingCards {
+  display: grid;
+  gap: 16px;
+}
+
+/* .markettingCards{
+    display: flex;
+    flex-direction: column;
+  gap: 20px;
+} */
+
+.chartBody {
+  padding: 10px 0;
+}
+/* 
+.chartBody {
+  display: grid;
+  gap: 18px;
+} */
+
+.chartPlaceholder {
+  display: flex;
+  gap: 8px;
+}
+/* .chartPlaceholder {
+  height: 160px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(170,59,255,0.08), rgba(170,59,255,0.02));
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  gap: 8px;
+} */
+
+.bar {
+  width: 20px;
+  height: 60px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}

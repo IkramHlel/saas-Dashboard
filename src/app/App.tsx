@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import type { RootState } from './app/store';
-import MainLayout from './shared/components/MainLayout';
-import Dashboard from './features/dashboard/Dashboard';
-import Orders from './features/orders/Orders';
-import Customers from './features/customers/Customers';
-import Inventory from './features/inventory/Inventory';
-import Settings from './features/settings/Settings';
-import Auth from './features/auth/Auth';
+import type { RootState } from './store';
+import MainLayout from '../shared/components/MainLayout';
+import Dashboard from '../features/dashboard/Dashboard';
+import Orders from '../features/orders/Orders';
+import Customers from '../features/customers/Customers';
+import Inventory from '../features/inventory/Inventory';
+import Settings from '../features/settings/Settings';
+import Auth from '../features/auth/Auth';
 
 function App() {
   const activePage = useSelector((state: RootState) => state.ui.activePage);

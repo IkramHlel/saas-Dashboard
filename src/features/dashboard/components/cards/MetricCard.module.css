@@ -7,7 +7,7 @@
   background-color: white;
 }
 
-.cardIcon {
+.icon {
   display: grid;
   place-items: center;
   background: var(--secondary-20);
@@ -16,15 +16,7 @@
   height: 28px;
 }
 
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 18px;
-}
-
-.cardTitles {
+.header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -39,24 +31,10 @@
   margin: 0;
 }
 
-.cardValues {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 18px;
-}
-
+label,
 .value {
   font-size: 28px;
   font-weight: 700;
   color: var(--text-h);
   margin: 0;
-}
-
-.cardMeta {
-  display: flex;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--action);
 }
