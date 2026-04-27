@@ -2,10 +2,10 @@ import { useState, type FormEvent } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { MdEmail, MdLock, MdPerson, MdArrowRightAlt } from 'react-icons/md';
-import { loginUser, signupUser } from '../services/authApi';
-import { loginSuccess } from '../store/slices/authSlice';
-import { setActivePage } from '../store/slices/uiSlice';
-import Logo from '../assets/MetricoLogo.png';
+import { loginUser, signupUser } from './services/authApi';
+import { loginSuccess } from '../../app/store/slices/authSlice';
+import { setActivePage } from '../../app/store/slices/uiSlice';
+import Logo from '../../assets/MetricoLogo.png';
 import styles from './Auth.module.css';
 
 const Auth = () => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../store';
-import Logo from '../../assets/MetricoLogo.png';
-import { toggleSidebar, setActivePage } from '../../store/slices/uiSlice';
+import type { RootState } from '../../../app/store';
+import Logo from '../../../assets/MetricoLogo.png';
+import { toggleSidebar, setActivePage } from '../../../app/store/slices/uiSlice';
 import { 
   MdDashboard, 
   MdShoppingCart, 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MdPerson, MdEmail, MdPhone, MdLocationOn, MdArrowDropDown, MdPhotoCamera } from 'react-icons/md';
-import type { RootState } from '../store';
+import type { RootState } from '../../app/store';
 import styles from './Settings.module.css';
 
 const Settings = () => {

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../store';
+import type { RootState } from '../../app/store';
 import { MdNotificationsNone, MdPerson, MdArrowDropDown } from 'react-icons/md';
-import Sidebar from './layout/Sidebar';
-import { logout } from '../store/slices/authSlice';
+import Sidebar from './Layout/Sidebar';
+import { logout } from '../../app/store/slices/authSlice';
 import styles from './MainLayout.module.css';
 
 interface LayoutProps {

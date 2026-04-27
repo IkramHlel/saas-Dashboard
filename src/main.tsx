@@ -5,8 +5,8 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import './styles/global.css'
 import App from './App.tsx'
-import { store } from './store'
-import { queryClient } from './services/queryClient'
+import { store } from './app/store/index.ts'
+import { queryClient } from './app/queryClient.ts'
 
 // Start MSW worker in development
 if (import.meta.env.DEV) {

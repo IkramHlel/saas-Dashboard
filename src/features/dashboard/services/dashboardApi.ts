@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { DashboardStats } from '../types';
+import type { DashboardStats } from '../types/dashboard.types';
 
 const fetchDashboardStats = async (): Promise<DashboardStats> => {
   const response = await fetch('/api/dashboard/stats');

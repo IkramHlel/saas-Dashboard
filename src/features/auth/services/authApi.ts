@@ -1,4 +1,4 @@
-import type { User } from '../types';
+import type { User } from '../types/auth.types'
 
 export interface LoginCredentials {
   email: string;
