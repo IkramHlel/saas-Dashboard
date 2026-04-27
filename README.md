@@ -21,17 +21,33 @@ This project was mainly built to practice real-world frontend architecture (stat
 
 
 src/
-├── components/    # Reusable UI components
-├── pages/         # Page components
-├── hooks/         # Custom hooks
-├── store/         # Redux store and slices
-├── services/      # API services and queries
-├── utils/         # Utility functions
-├── types/         # TypeScript type definitions
-├── styles/        # Global styles
-├── mocks/         # MSW handlers and server
-├── tests/         # Test files
-└── assets/        # Static assets
+├── app/                  # config globale (store, queryClient)
+├── assets/               # Static assets
+├── features/
+│   ├── dashboard/
+│   │   ├── components/   
+│   │   ├── hooks/      
+│   │   ├── services/      
+│   │   ├── types/      
+│   │   ├── utils/       
+│   │   ├── config/
+│   │   ├── Dashboard.tsx
+│   │   └── Dashboard.module.css
+│   │
+│   ├── auth/
+│   ├── orders/
+│   ├── customers/
+│
+├── shared/                # UI générique réutilisable
+│   ├── components/
+│   ├── hooks/    
+│   ├── utils/   
+│   └── types/
+│
+├── mocks/                 # MSW handlers and server
+├── tests/                 # Test files
+├── styles/                # Global styles
+└── main.tsx
 
 
 ## Getting Started
