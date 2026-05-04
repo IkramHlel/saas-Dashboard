@@ -85,15 +85,160 @@ export const handlers = [
     });
   }),
 
-  http.get('/api/dashboard/stats', () => {
-    return HttpResponse.json({
-        sales: 0.00,
-        volume: 0,
-        customers: 0,
-        active: 0,
-        allOrders: 0,
-        pending: 0,
-        completed: 0,
-    });
+  http.get('/api/dashboard/stats', async ({ request }) => {
+    const url = new URL(request.url);
+    const period = (url.searchParams.get('period') ?? 'week') as 'week' | 'month' | 'year';
+
+    const dashboardData = {
+      week: {
+        sales: 4000000,
+        volume: 450,
+        customers: 1250,
+        activeCustomers: 1180,
+        allOrders: 450,
+        pending: 5,
+        completed: 445,
+        allProducts: 45,
+        activeProducts: 32,
+        abandonedCart: 20,
+        marketingSegments: {
+          acquisition: 180,
+          purchase: 120,
+          retention: 60,
+        },
+        summarySeries: [
+          { label: 'Sept 10', value: 74000 },
+          { label: 'Sept 11', value: 98000 },
+          { label: 'Sept 12', value: 62000 },
+          { label: 'Sept 13', value: 120000 },
+          { label: 'Sept 14', value: 83000 },
+          { label: 'Sept 15', value: 103000 },
+          { label: 'Sept 16', value: 91000 },
+        ],
+        recentOrders: [
+          {
+            id: 'order-1',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '12 Sept 2022',
+            status: 'Pending',
+            imageUrl: 'https://via.placeholder.com/48/2563EB/FFFFFF?text=i13',
+          },
+          {
+            id: 'order-2',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '12 Sept 2022',
+            status: 'Completed',
+            imageUrl: 'https://via.placeholder.com/48/0F766E/FFFFFF?text=i13',
+          },
+          {
+            id: 'order-3',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '12 Sept 2022',
+            status: 'Pending',
+            imageUrl: 'https://via.placeholder.com/48/DC2626/FFFFFF?text=i13',
+          },
+          {
+            id: 'order-4',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '12 Sept 2022',
+            status: 'Completed',
+            imageUrl: 'https://via.placeholder.com/48/166534/FFFFFF?text=i13',
+          },
+        ],
+      },
+      month: {
+        sales: 18000000,
+        volume: 1820,
+        customers: 5400,
+        activeCustomers: 4900,
+        allOrders: 1800,
+        pending: 18,
+        completed: 1782,
+        allProducts: 78,
+        activeProducts: 59,
+        abandonedCart: 14,
+        marketingSegments: {
+          acquisition: 680,
+          purchase: 520,
+          retention: 310,
+        },
+        summarySeries: [
+          { label: 'Week 1', value: 190000 },
+          { label: 'Week 2', value: 260000 },
+          { label: 'Week 3', value: 220000 },
+          { label: 'Week 4', value: 280000 },
+          { label: 'Week 5', value: 240000 },
+          { label: 'Week 6', value: 310000 },
+          { label: 'Week 7', value: 290000 },
+        ],
+        recentOrders: [
+          {
+            id: 'order-5',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '05 Sept 2022',
+            status: 'Completed',
+            imageUrl: 'https://via.placeholder.com/48/047857/FFFFFF?text=i13',
+          },
+          {
+            id: 'order-6',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '08 Sept 2022',
+            status: 'Pending',
+            imageUrl: 'https://via.placeholder.com/48/BE185D/FFFFFF?text=i13',
+          },
+        ],
+      },
+      year: {
+        sales: 92000000,
+        volume: 8200,
+        customers: 41500,
+        activeCustomers: 39200,
+        allOrders: 9200,
+        pending: 90,
+        completed: 9110,
+        allProducts: 340,
+        activeProducts: 310,
+        abandonedCart: 12,
+        marketingSegments: {
+          acquisition: 4800,
+          purchase: 3600,
+          retention: 1800,
+        },
+        summarySeries: [
+          { label: 'Jan', value: 680000 },
+          { label: 'Feb', value: 720000 },
+          { label: 'Mar', value: 810000 },
+          { label: 'Apr', value: 940000 },
+          { label: 'May', value: 870000 },
+          { label: 'Jun', value: 920000 },
+          { label: 'Jul', value: 980000 },
+        ],
+        recentOrders: [
+          {
+            id: 'order-7',
+            product: 'iPhone 13',
+            price: 730000,
+            quantity: 1,
+            date: '02 Jan 2022',
+            status: 'Completed',
+            imageUrl: 'https://via.placeholder.com/48/0f172a/FFFFFF?text=i13',
+          },
+        ],
+      },
+    };
+
+    return HttpResponse.json(dashboardData[period]);
   }),
 ];
