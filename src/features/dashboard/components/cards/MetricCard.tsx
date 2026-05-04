@@ -1,15 +1,22 @@
 import { Dropdown } from '../../../../shared/components/UI/dropdown';
 import styles from './MetricCard.module.css';
-import {type DashboardCardConfig } from '../../types/dashboard.types';
+import type { DashboardCardConfig, DashboardPeriod } from '../../types/dashboard.types';
+import { periodOptions } from '../../utils/dashboard.utils';
 
+type MetricCardProps = DashboardCardConfig & {
+  period?: DashboardPeriod;
+  onPeriodChange?: (value: DashboardPeriod) => void;
+  showDropdown?: boolean;
+};
 
-const MetricCard = ({ items, icon: Icon, iconProps }: DashboardCardConfig) => {
-  const options = [
-    { label: "This week", value: "week" },
-    { label: "This month", value: "month" },
-    { label: "This year", value: "year" },
-  ];
-
+const MetricCard = ({
+  items,
+  icon: Icon,
+  iconProps,
+  period,
+  onPeriodChange,
+  showDropdown = true,
+}: MetricCardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -17,16 +24,19 @@ const MetricCard = ({ items, icon: Icon, iconProps }: DashboardCardConfig) => {
           <Icon {...iconProps} />
         </div>
 
-        <Dropdown
-          options={options}
-          defaultValue="week"
-          onChange={(value) => console.log(value)}
-        />
+        {showDropdown && (
+          <Dropdown
+            options={periodOptions}
+            value={period}
+            defaultValue="week"
+            onChange={(value) => onPeriodChange?.(value as DashboardPeriod)}
+          />
+        )}
       </div>
 
       <div className={styles.content}>
         {items.map((item) => (
-          <div key={item.label}>
+          <div key={item.label} className={styles.itemRow}>
             <p className={styles.title}>{item.label}</p>
             <p className={styles.value}>{item.value}</p>
           </div>

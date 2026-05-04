@@ -11,13 +11,16 @@ type Option = {
 type DropdownProps = {
   options: Option[];
   onChange?: (value: string) => void;
-  defaultValue?: string;
+  defaultValue?: string | undefined;
+  value?: string | undefined;
 };
 
-export function Dropdown({ options, onChange, defaultValue }: DropdownProps) {
+export function Dropdown({ options, onChange, defaultValue, value }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const initialOption =
-  options.find((o) => o.value === defaultValue) ?? options[0]!;
+    options.find((o) => o.value === value) ??
+    options.find((o) => o.value === defaultValue) ??
+    options[0]!;
 
   const [selected, setSelected] = useState(initialOption);
 
@@ -46,6 +49,16 @@ export function Dropdown({ options, onChange, defaultValue }: DropdownProps) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const selectedOption =
+      options.find((o) => o.value === value) ??
+      options.find((o) => o.value === defaultValue) ??
+      options[0];
+    if (selectedOption) {
+      setSelected(selectedOption);
+    }
+  }, [value, defaultValue, options]);
 
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
