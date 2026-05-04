@@ -1,18 +1,24 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useDashboardStats } from './services/dashboardApi';
 import MetricCard from './components/cards/MetricCard';
 import styles from './Dashboard.module.css';
 import { getDashboardCards } from './config/dashboard.config';
 import { defaultStats } from './utils/dashboard.utils';
+import type { DashboardPeriod } from './types/dashboard.types';
 
 const MarketingSection = lazy(() => import('./components/sections/MarketingSection'));
 const SummarySection = lazy(() => import('./components/sections/SummarySection'));
 const RecentOrders = lazy(() => import('./components/sections/RecentOrders'));
 
 const Dashboard = () => {
-  const { data, isLoading, error, refetch } = useDashboardStats('week');
+  const [period, setPeriod] = useState<DashboardPeriod>('week');
+  const { data, isLoading, error, refetch } = useDashboardStats(period);
   const stats = data ?? defaultStats;
   const cards = getDashboardCards(stats);
+
+  const handlePeriodChange = (newPeriod: DashboardPeriod) => {
+    setPeriod(newPeriod);
+  };
 
   if (isLoading) {
     return (
@@ -47,13 +53,16 @@ const Dashboard = () => {
             <MarketingSection
               cards={cards.slice(3)}
               marketingData={stats.marketingSegments}
-              period="week"
-              onPeriodChange={() => {}}
+              period={period}
+              onPeriodChange={handlePeriodChange}
             />
           </Suspense>
 
           <Suspense fallback={<div className={styles.sectionFallback}>Loading summary...</div>}>
-            <SummarySection summarySeries={stats.summarySeries} />
+            <SummarySection
+              summarySeries={stats.summarySeries}
+              onPeriodChange={handlePeriodChange}
+            />
           </Suspense>
         </div>
 

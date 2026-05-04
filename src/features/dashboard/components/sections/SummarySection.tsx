@@ -2,11 +2,12 @@ import { useState } from 'react';
 import DashboardCard from '../cards/DashboardCard';
 import { Dropdown } from '../../../../shared/components/UI/dropdown';
 import styles from './SummarySection.module.css';
-import type { DashboardStats } from '../../types/dashboard.types';
+import type { DashboardStats, DashboardPeriod } from '../../types/dashboard.types';
 import { periodOptions } from '../../utils/dashboard.utils';
 
 type Props = {
   summarySeries: DashboardStats['summarySeries'];
+  onPeriodChange?: (period: DashboardPeriod) => void;
 };
 
 const metricOptions = [
@@ -16,10 +17,16 @@ const metricOptions = [
 
 const axisLabels = ['100k', '80k', '60k', '40k', '20k'];
 
-const SummarySection = ({ summarySeries }: Props) => {
+const SummarySection = ({ summarySeries, onPeriodChange }: Props) => {
   const [selectedMetric, setSelectedMetric] = useState('sales');
-  const [selectedPeriod, setSelectedPeriod] = useState('week');
+  const [selectedPeriod, setSelectedPeriod] = useState<DashboardPeriod>('week');
   const maxValue = 100000;
+
+  const handlePeriodChange = (value: string) => {
+    const newPeriod = value as DashboardPeriod;
+    setSelectedPeriod(newPeriod);
+    onPeriodChange?.(newPeriod);
+  };
 
   return (
     <DashboardCard
@@ -34,7 +41,7 @@ const SummarySection = ({ summarySeries }: Props) => {
           <Dropdown
             options={periodOptions}
             value={selectedPeriod}
-            onChange={(value) => setSelectedPeriod(value)}
+            onChange={handlePeriodChange}
           />
         </div>
       }

@@ -194,8 +194,6 @@ export const handlers = [
           { label: 'Week 3', value: 220000 },
           { label: 'Week 4', value: 280000 },
           { label: 'Week 5', value: 240000 },
-          { label: 'Week 6', value: 310000 },
-          { label: 'Week 7', value: 290000 },
         ],
         recentOrders: [
           {
