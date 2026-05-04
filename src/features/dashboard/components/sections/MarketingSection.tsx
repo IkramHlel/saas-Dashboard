@@ -1,36 +1,39 @@
-import DashboardCard from '../cards/DashboardCard';
 import MetricCard from '../cards/MetricCard';
 import styles from './MarketingSection.module.css';
-import type { DashboardCardConfig } from '../../types/dashboard.types';
-
+import type {
+  DashboardCardConfig,
+  DashboardPeriod,
+  DashboardStats,
+} from '../../types/dashboard.types';
+import MarketingChart from './MarketingChart';
 
 type Props = {
   cards: DashboardCardConfig[];
+  marketingData: DashboardStats['marketingSegments'];
+  period: DashboardPeriod;
+  onPeriodChange: (value: DashboardPeriod) => void;
 };
 
-const MarketingSection = ({ cards }: Props) => {
+const MarketingSection = ({ cards, marketingData, period, onPeriodChange }: Props) => {
   return (
-<div className={styles.markettingGrid}>
-            <DashboardCard
-              title="Marketing"
-              subtitle="Acquisition · Purchase · Retention"
-              rightSlot={<span>This Week</span>}
-            >
-            <div className={styles.chartBody}>
-              <div className={styles.chartPlaceholder}>
-                <div className={styles.bar} />
-                <div className={styles.bar} />
-                <div className={styles.bar} />
-                <div className={styles.bar} />
-              </div>
-            </div>
-            </DashboardCard>
-            <div className={styles.markettingCards}>
-             {cards.slice(3).map((card, index) => (
-                <MetricCard key={index} {...card} />
-              ))}
-            </div> 
-          </div> 
+    <div className={styles.markettingGrid}>
+      <MarketingChart
+        marketingData={marketingData}
+        period={period}
+        onPeriodChange={onPeriodChange}
+      />
+
+      <div className={styles.markettingCards}>
+        {cards.map((card, index) => (
+          <MetricCard
+            key={index}
+            {...card}
+            showDropdown={false}
+          />
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
 export default MarketingSection;
