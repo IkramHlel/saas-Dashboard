@@ -1,34 +1,66 @@
+import { useState } from 'react';
 import DashboardCard from '../cards/DashboardCard';
+import { Dropdown } from '../../../../shared/components/UI/dropdown';
 import styles from './SummarySection.module.css';
 import type { DashboardStats } from '../../types/dashboard.types';
+import { periodOptions } from '../../utils/dashboard.utils';
 
 type Props = {
   summarySeries: DashboardStats['summarySeries'];
 };
 
+const metricOptions = [
+  { label: 'Sales', value: 'sales' },
+  { label: 'Revenue', value: 'revenue' },
+];
+
+const axisLabels = ['100k', '80k', '60k', '40k', '20k'];
+
 const SummarySection = ({ summarySeries }: Props) => {
-  const maxValue = Math.max(...summarySeries.map((point) => point.value), 1);
+  const [selectedMetric, setSelectedMetric] = useState('sales');
+  const [selectedPeriod, setSelectedPeriod] = useState('week');
+  const maxValue = 100000;
 
   return (
     <DashboardCard
-      title="Summary"
+      title={`Summary - ${selectedMetric === 'sales' ? 'Sales' : 'Revenue'}`}
       rightSlot={
         <div className={styles.summaryControls}>
-          <span className={styles.summaryLabel}>Sales</span>
-          <span className={styles.summaryPeriod}>Last 7 Days</span>
+          <Dropdown
+            options={metricOptions}
+            value={selectedMetric}
+            onChange={(value) => setSelectedMetric(value)}
+          />
+          <Dropdown
+            options={periodOptions}
+            value={selectedPeriod}
+            onChange={(value) => setSelectedPeriod(value)}
+          />
         </div>
       }
     >
-      <div className={styles.barChart}>
-        {summarySeries.map((point) => (
-          <div key={point.label} className={styles.barWrapper}>
-            <div
-              className={styles.bar}
-              style={{ height: `${Math.max(20, Math.round((point.value / maxValue) * 100))}%` }}
-            />
-            <p className={styles.barLabel}>{point.label}</p>
-          </div>
-        ))}
+      <div className={styles.summaryContent}>
+        <div className={styles.axisLabels}>
+          {axisLabels.map((label) => (
+            <span key={label} className={styles.axisLabel}>
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.chartGrid}>
+          {summarySeries.map((point) => (
+            <div key={point.label} className={styles.barColumn}>
+              <div className={styles.barTrack}>
+                <div
+                  className={styles.barFill}
+                  style={{ height: `${Math.max(20, Math.round((point.value / maxValue) * 100))}%` }}
+                />
+              </div>
+              <p className={styles.barLabel}>{point.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </DashboardCard>
   );

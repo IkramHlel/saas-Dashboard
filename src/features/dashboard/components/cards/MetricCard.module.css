@@ -31,17 +31,17 @@
   margin: 0 0 8px;
 }
 
-.itemRow {
+.content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+  gap: 20px;
 }
 
-.itemRow:last-child {
-  border-bottom: none;
+.itemRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 140px;
 }
 
 .value {

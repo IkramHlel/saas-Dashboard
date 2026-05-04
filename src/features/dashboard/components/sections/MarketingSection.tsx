@@ -28,7 +28,8 @@ const MarketingSection = ({ cards, marketingData, period, onPeriodChange }: Prop
           <MetricCard
             key={index}
             {...card}
-            showDropdown={false}
+            showDropdown={index === 1}
+            defaultPeriod="week"
           />
         ))}
       </div>

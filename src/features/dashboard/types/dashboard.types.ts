@@ -43,4 +43,9 @@ export type DashboardCardConfig = {
     color?: string;
   };
   items: DashboardMetricItem[];
+  periodItems?: {
+    week: DashboardMetricItem[];
+    month: DashboardMetricItem[];
+    year: DashboardMetricItem[];
+  };
 };

@@ -4,7 +4,7 @@
 
 .orderItem:last-child { border-bottom: none; }
 
-.orderImage { width: 48px; height: 48px; border-radius: 16px; object-fit: cover; background: #f3f4f6; }
+.orderImage { width: 52px; height: 52px; border-radius: 18px; object-fit: cover; background: #f3f4f6; }
 
 .orderDetails { display: flex; flex-direction: column; gap: 6px; }
 
